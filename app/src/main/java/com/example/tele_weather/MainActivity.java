@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Texto "Elaborado por..."
         elaboradoPorText = findViewById(R.id.elaborado_por_text);
-        elaboradoPorText.setText("Elaborado por: Tu Nombre / Tu Código");
+        elaboradoPorText.setText("Elaborado por: Pedro Miguel Bustamante Melo 20206156");
     }
 
     private boolean verificarConexion() {
