@@ -2,13 +2,13 @@
     <item
         android:id="@+id/locationFragment"
         android:icon="@drawable/ic_location"
-        android:title="Location" />
+        android:title="Locaciones" />
     <item
         android:id="@+id/pronosticoFragment"
         android:icon="@drawable/ic_pronostico"
-        android:title="Forecast" />
+        android:title="Pronosticos" />
     <item
         android:id="@+id/deportesFragment"
         android:icon="@drawable/ic_deportes"
-        android:title="Sports" />
+        android:title="Deportes" />
 </menu>
