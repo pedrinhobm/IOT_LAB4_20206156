@@ -18,21 +18,21 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="Location Name" />
+            android:text="Nombre de la locación" />
 
         <TextView
             android:id="@+id/location_region_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Region" />
+            android:text="Región" />
 
         <TextView
             android:id="@+id/location_country_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Country" />
+            android:text="País" />
 
     </LinearLayout>
 

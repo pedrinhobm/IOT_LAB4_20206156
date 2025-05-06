@@ -18,35 +18,35 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:text="Stadium" />
+            android:text="Estadio" />
 
         <TextView
             android:id="@+id/deportes_country_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Country" />
+            android:text="País" />
 
         <TextView
             android:id="@+id/deportes_tournament_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Tournament" />
+            android:text="Torneo" />
 
         <TextView
             android:id="@+id/deportes_start_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Start" />
+            android:text="Hora inicial" />
 
         <TextView
             android:id="@+id/deportes_match_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Match" />
+            android:text="Partido" />
 
     </LinearLayout>
 
