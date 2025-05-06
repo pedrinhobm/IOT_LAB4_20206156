@@ -1,0 +1,25 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/locationFragment">
+
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.example.tele_weather.fragments.LocationFragment"
+        android:label="LocationFragment" >
+        <action
+            android:id="@+id/action_locationFragment_to_pronosticoFragment"
+            app:destination="@id/pronosticoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pronosticoFragment"
+        android:name="com.example.tele_weather.fragments.PronosticoFragment"
+        android:label="PronosticoFragment" />
+    <fragment
+        android:id="@+id/deportesFragment"
+        android:name="com.example.tele_weather.fragments.DeportesFragment"
+        android:label="DeportesFragment" />
+
+
+</navigation>

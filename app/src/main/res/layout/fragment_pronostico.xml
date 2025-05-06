@@ -1,0 +1,66 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tele_weather.fragments.PronosticoFragment">
+
+    <TextView
+        android:id="@+id/titulo_pronostico"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pronósticos del clima"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/id_location_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Enter Location ID"
+        android:inputType="number"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@id/titulo_pronostico"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/days_forecast_edit_text" />
+
+    <EditText
+        android:id="@+id/days_forecast_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Enter Days"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/search_button"
+        app:layout_constraintStart_toEndOf="@id/id_location_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/titulo_pronostico" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Buscar"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/titulo_pronostico"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecast_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Forecast data for the specified location"
+        app:layout_constraintTop_toBottomOf="@+id/id_location_edit_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

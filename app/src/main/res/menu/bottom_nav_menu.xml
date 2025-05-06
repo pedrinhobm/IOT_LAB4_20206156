@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/locationFragment"
+        android:icon="@drawable/ic_location"
+        android:title="Location" />
+    <item
+        android:id="@+id/pronosticoFragment"
+        android:icon="@drawable/ic_pronostico"
+        android:title="Forecast" />
+    <item
+        android:id="@+id/deportesFragment"
+        android:icon="@drawable/ic_deportes"
+        android:title="Sports" />
+</menu>
