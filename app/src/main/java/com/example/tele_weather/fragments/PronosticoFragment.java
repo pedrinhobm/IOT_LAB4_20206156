@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -103,19 +105,24 @@ public class PronosticoFragment extends Fragment implements SensorEventListener 
                         forecastDaysList.addAll(forecastResponse.getForecast().getForecastday());
                         pronosticoAdapter.notifyDataSetChanged();
                     } else {
-                        // Handle error or empty forecast
+                        mostrarError("No se encontraron datos");
                     }
                 } else {
-                    // Handle error
+                    mostrarError("Pronostico no encontrado o no disponible.");
                 }
             }
 
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {
-                // Handle error
+                mostrarError("Error de red o conexión.");
             }
         });
     }
+
+    private void mostrarError(String mensaje) {
+        Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
+    }
+
 
     @Override
     public void onSensorChanged(SensorEvent event) {

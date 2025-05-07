@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -34,8 +36,6 @@ public class LocationFragment extends Fragment {
     private LocationAdapter locationAdapter;
     private List<Location> locationList = new ArrayList<>(); //  O usa un tipo de lista adecuado
     private NavController navController;
-
-    //  Interfaz Retrofit (Opcional, si usas Retrofit)
     private WeatherApi weatherApi;
 
     @Override
@@ -54,7 +54,7 @@ public class LocationFragment extends Fragment {
         recyclerView = view.findViewById(R.id.location_recycler_view);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        locationAdapter = new LocationAdapter(locationList, navController); //  Pasa el NavController
+        locationAdapter = new LocationAdapter(locationList, navController);
         recyclerView.setAdapter(locationAdapter);
 
         //  Inicializar Retrofit (Opcional)
@@ -74,7 +74,6 @@ public class LocationFragment extends Fragment {
     }
 
     private void buscarLocaciones(String query) {
-        //  Usa Retrofit para hacer la llamada a la API (Ejemplo)
         Call<List<Location>> call = weatherApi.searchLocations("ec24b1c6dd8a4d528c1205500250305", query);
         call.enqueue(new Callback<List<Location>>() {
             @Override
@@ -84,17 +83,17 @@ public class LocationFragment extends Fragment {
                     locationList.addAll(response.body());
                     locationAdapter.notifyDataSetChanged();
                 } else {
-                    //  Manejar error (ej., mostrar un Toast)
+                    mostrarError("No se encontraron datos en ese local");
                 }
             }
 
             @Override
             public void onFailure(Call<List<Location>> call, Throwable t) {
-                //  Manejar error de conexión
+                mostrarError("Error de red o conexión");
             }
         });
-
-        //  Código de ejemplo sin Retrofit (Usar HttpURLConnection, etc.)
-        //  ...
+    }
+    private void mostrarError(String mensaje) {
+        Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
     }
 }

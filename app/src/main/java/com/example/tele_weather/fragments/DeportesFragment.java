@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -77,17 +79,18 @@ public class DeportesFragment extends Fragment {
                     sportList.add(response.body());  //  Asume que recibes un objeto Sport
                     deportesAdapter.notifyDataSetChanged();
                 } else {
-                    // Manejar error
+                    mostrarError("No se encontraron datos deportivos en ese local");
                 }
             }
 
             @Override
             public void onFailure(Call<Sport> call, Throwable t) {
-                // Manejar error de conexión
+                mostrarError("Error de red o conexión");
             }
         });
-
-        // Código de ejemplo sin Retrofit
-        // ...
     }
+    private void mostrarError(String mensaje) {
+        Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
+    }
+
 }
