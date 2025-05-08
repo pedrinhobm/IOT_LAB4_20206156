@@ -1,5 +1,4 @@
 package com.example.tele_weather.fragments;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,7 +15,6 @@ import com.example.tele_weather.R;
 import com.example.tele_weather.adapters.DeportesAdapter;
 import com.example.tele_weather.models.Sport;
 import com.example.tele_weather.network.WeatherApi;
-
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;

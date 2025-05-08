@@ -12,7 +12,6 @@ import com.example.tele_weather.models.Location;
 import java.util.List;
 
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
-
     private List<Location> locations;
     private NavController navController;
 
@@ -38,7 +37,8 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     public int getItemCount() {
         return locations.size();
     }
-
+    // aqui si use ia porque que se debian obtener en un textview
+    // tuve que optar por una clase publica para recopilarlo , aspi lo haré con deportes y pronostico Adapter
     public class LocationViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextView;
         private TextView regionTextView;
@@ -55,14 +55,14 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
                 public void onClick(View v) {
                     Location selectedLocation = locations.get(getAdapterPosition());
                     Bundle bundle = new Bundle();
-                    bundle.putString("idLocation", String.valueOf(selectedLocation.getId()));  //  Asegúrate de tener un getId()
-                    navController.navigate(R.id.action_locationFragment_to_pronosticoFragment, bundle);
+                    bundle.putString("idLocation", String.valueOf(selectedLocation.getId())); // con un getId() permitira que al seleccionar una localidad la identifique
+                    navController.navigate(R.id.action_locationFragment_to_pronosticoFragment, bundle); // y nos dirija a la siguiente vista del pronostico donde mediran la temperatura por los proximos dias
                 }
             });
         }
 
-        public void bind(Location location) {
-            nameTextView.setText(location.getName());
+        public void bind(Location location) { // en la funcion de bind, se permitira obtener los datos de la localidad
+            nameTextView.setText(location.getName()); // su nombre, region y pais exacto
             regionTextView.setText(location.getRegion());
             countryTextView.setText(location.getCountry());
         }

@@ -35,7 +35,9 @@ public class PronosticoAdapter extends RecyclerView.Adapter<PronosticoAdapter.Pr
     public int getItemCount() {
         return forecastDays.size();
     }
-
+    // como indique anteriormente, replique de nuevo el pronostico como en los adapters pasados
+    // con los datos que iran en cada dia que tú seleccionas como el dia
+    // la temperatura maxima y minima , y la condicion climática
     public class PronosticoViewHolder extends RecyclerView.ViewHolder {
         private TextView dateTextView;
         private TextView maxTempTextView;
@@ -49,11 +51,11 @@ public class PronosticoAdapter extends RecyclerView.Adapter<PronosticoAdapter.Pr
             minTempTextView = itemView.findViewById(R.id.pronostico_min_temp_text_view);
             conditionTextView = itemView.findViewById(R.id.pronostico_condition_text_view);
         }
-        public void bind(ForecastDay forecastDay) {
+        public void bind(ForecastDay forecastDay) { // en la funcion de bind se recibirá y mostrará los datos
             dateTextView.setText(forecastDay.getDate());
-            maxTempTextView.setText("Max: " + forecastDay.getDay().getMaxtemp_c() + "°C"); // Asume que tienes getDay()
+            maxTempTextView.setText("Max: " + forecastDay.getDay().getMaxtemp_c() + "°C");
             minTempTextView.setText("Min: " + forecastDay.getDay().getMintemp_c() + "°C");
-            conditionTextView.setText(forecastDay.getDay().getCondition().getText());  // Asume que tienes getCondition() y getText()
+            conditionTextView.setText(forecastDay.getDay().getCondition().getText());
         }
     }
 }

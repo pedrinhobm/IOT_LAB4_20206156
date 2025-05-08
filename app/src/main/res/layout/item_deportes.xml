@@ -47,7 +47,5 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:text="Partido" />
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

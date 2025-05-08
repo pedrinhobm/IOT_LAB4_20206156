@@ -1,5 +1,4 @@
 package com.example.tele_weather.fragments;
-
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -12,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -22,9 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tele_weather.R;
 import com.example.tele_weather.adapters.PronosticoAdapter;
 import com.example.tele_weather.models.Forecast;
-import com.example.tele_weather.models.ForecastDay; // Import ForecastDay
+import com.example.tele_weather.models.ForecastDay;
 import com.example.tele_weather.network.WeatherApi;
-
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
