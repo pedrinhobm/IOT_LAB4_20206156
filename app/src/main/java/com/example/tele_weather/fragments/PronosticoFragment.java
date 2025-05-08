@@ -78,12 +78,31 @@ public class PronosticoFragment extends Fragment implements SensorEventListener 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String idLocation = idLocationEditText.getText().toString();
-                int days = Integer.parseInt(daysForecastEditText.getText().toString());
+            public void onClick(View v) { // en esta funcion usa ia debido a que no me mostraba un error si ...
+                // si primmero no completaba ambos campos y segundo por si no validaba un numero de 1 al 14 dias
+                String idLocation = idLocationEditText.getText().toString().trim();
+                String daysText = daysForecastEditText.getText().toString().trim();
+                // ese fue un problema por el cual si no lo asignaba , me botaba de la aplicacion
+                // es por eso que le agregue estos casos que he mencionado
+                if (idLocation.isEmpty() || daysText.isEmpty()) {
+                    Toast.makeText(getContext(), "Por favor, complete ambos campos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int days;
+                try {
+                    days = Integer.parseInt(daysText);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Ingrese un número válido para los días.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (days < 1 || days > 14) { // por esta selectiva ha sido la primordial
+                    Toast.makeText(getContext(), "El número de días debe estar entre 1 y 14.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 buscarPronosticos(idLocation, days);
             }
         });
+
 
         sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
