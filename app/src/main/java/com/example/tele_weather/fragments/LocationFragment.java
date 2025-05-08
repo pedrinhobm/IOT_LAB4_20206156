@@ -79,13 +79,13 @@ public class LocationFragment extends Fragment {
                     locationList.addAll(response.body());
                     locationAdapter.notifyDataSetChanged();
                 } else {
-                    mostrarError("No se encontraron datos en ese local");
+                    mostrarError("No se encontraron datos");
                 }
             }
 
             @Override
             public void onFailure(Call<List<Location>> call, Throwable t) {
-                mostrarError("Error de red o conexión");
+                mostrarError("Error de red");
             }
         });
     }

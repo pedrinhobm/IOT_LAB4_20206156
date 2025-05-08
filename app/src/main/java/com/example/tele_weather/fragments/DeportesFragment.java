@@ -24,7 +24,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DeportesFragment extends Fragment {
-
     private EditText locationEditText;
     private Button searchButton;
     private RecyclerView recyclerView;
@@ -49,7 +48,6 @@ public class DeportesFragment extends Fragment {
         deportesAdapter = new DeportesAdapter(sportList);
         recyclerView.setAdapter(deportesAdapter);
 
-        // Inicializar Retrofit (Opcional)
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.weatherapi.com/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -70,23 +68,21 @@ public class DeportesFragment extends Fragment {
         call.enqueue(new Callback<Sport>() {
             @Override
             public void onResponse(Call<Sport> call, Response<Sport> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    sportList.clear();
-                    sportList.add(response.body());
-                    deportesAdapter.notifyDataSetChanged();
-                } else {
-                    mostrarError("No se encontraron datos deportivos en ese local");
+                if (response.isSuccessful() && response.body() != null && response.body().getFootball() != null && !response.body().getFootball().isEmpty()) {
+                    sportList.clear(); // response.body().getFootball() != null && !response.body().getFootball().isEmpty() tuve que agregar estas condiciones
+                    sportList.add(response.body()); // .. con ia debido a que si colocaba una ciudad donde habia partido , me botaba de la aplicacion
+                    deportesAdapter.notifyDataSetChanged();// similar al problema del numero de dias del pronositco del clima, por eso colocamos la ficon isEmpty() en caso no lo encontraran
+                } else { // y aqui esta el mensaje de error al no encontrarlo
+                    mostrarError("La ciudad que busca no está disponible");
                 }
             }
-
             @Override
             public void onFailure(Call<Sport> call, Throwable t) {
-                mostrarError("Error de red o conexión");
+                mostrarError("Error de conexión");
             }
         });
     }
     private void mostrarError(String mensaje) {
         Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
     }
-
 }

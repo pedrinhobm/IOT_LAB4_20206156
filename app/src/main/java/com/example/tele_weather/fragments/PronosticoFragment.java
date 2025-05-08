@@ -123,13 +123,13 @@ public class PronosticoFragment extends Fragment implements SensorEventListener 
                         mostrarError("No se encontraron datos");
                     }
                 } else {
-                    mostrarError("Pronostico no encontrado o no disponible.");
+                    mostrarError("Pronostico no encontrado");
                 }
             }
 
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {
-                mostrarError("Error de red o conexión.");
+                mostrarError("Error de conexión.");
             }
         });
     }
