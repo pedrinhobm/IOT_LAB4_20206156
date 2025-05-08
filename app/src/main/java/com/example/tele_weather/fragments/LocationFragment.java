@@ -34,7 +34,7 @@ public class LocationFragment extends Fragment {
     private Button searchButton;
     private RecyclerView recyclerView;
     private LocationAdapter locationAdapter;
-    private List<Location> locationList = new ArrayList<>(); //  O usa un tipo de lista adecuado
+    private List<Location> locationList = new ArrayList<>();
     private NavController navController;
     private WeatherApi weatherApi;
 
@@ -48,7 +48,6 @@ public class LocationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
-
         searchLocationEditText = view.findViewById(R.id.location_edit_text);
         searchButton = view.findViewById(R.id.search_button);
         recyclerView = view.findViewById(R.id.location_recycler_view);
@@ -57,7 +56,6 @@ public class LocationFragment extends Fragment {
         locationAdapter = new LocationAdapter(locationList, navController);
         recyclerView.setAdapter(locationAdapter);
 
-        //  Inicializar Retrofit (Opcional)
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.weatherapi.com/v1/")
                 .addConverterFactory(GsonConverterFactory.create())

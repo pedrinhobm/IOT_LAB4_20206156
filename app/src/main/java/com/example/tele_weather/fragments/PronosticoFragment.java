@@ -40,11 +40,10 @@ public class PronosticoFragment extends Fragment implements SensorEventListener 
     private Button searchButton;
     private RecyclerView recyclerView;
     private PronosticoAdapter pronosticoAdapter;
-    private List<ForecastDay> forecastDaysList = new ArrayList<>(); // Change to ForecastDay
-
+    private List<ForecastDay> forecastDaysList = new ArrayList<>();
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private static final float UMBRAL_DE_ACELERACION = 20.0f;
+    private static final float umbral_aceleracion = 20.0f;
 
     private WeatherApi weatherApi;
 
@@ -123,18 +122,18 @@ public class PronosticoFragment extends Fragment implements SensorEventListener 
         Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG).show();
     }
 
-
+    // en el caso de sensor si use ia ya que hasta el momento
+    // no entendia o sabia que funcion puedeb funcionar un sensor mientras agitas el celular
+    // es por ello que tuve que comprobarlo con mi movil
     @Override
-    public void onSensorChanged(SensorEvent event) {
+    public void onSensorChanged(SensorEvent event) { // de este sensor se va recopilar 3 valores
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float x = event.values[0];
-            float y = event.values[1];
-            float z = event.values[2];
-
+            float x = event.values[0]; // y de aceurdo a ello, calculamos su modulo o magnitud
+            float y = event.values[1]; // para obtener la aceleracion
+            float z = event.values[2]; // pero lo convertimos en variable float
             float acceleration = (float) Math.sqrt(x * x + y * y + z * z);
-
-            if (acceleration > UMBRAL_DE_ACELERACION) {
-                mostrarDialogoConfirmacion();
+            if (acceleration > umbral_aceleracion) { // y con una selectiva medimos si llega a superarlo o no a 20 ms2
+                mostrarDialogoConfirmacion(); // si es del caso nos dirigmos a la pregunta de confirmacion
             }
         }
     }
@@ -155,11 +154,11 @@ public class PronosticoFragment extends Fragment implements SensorEventListener 
         sensorManager.unregisterListener(this);
     }
 
-    private void mostrarDialogoConfirmacion() {
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Confirmar Acción")
-                .setMessage("¿Desea eliminar los últimos pronósticos?")
-                .setPositiveButton("Sí", (dialog, which) -> {
+    private void mostrarDialogoConfirmacion() { // en dicho dialogo volvemos usar un AlertDialog
+        new AlertDialog.Builder(requireContext()) // para confirmar si deseas eleminar los pronositcos
+                .setTitle("Confirmar Acción") // y luego limpiarlos
+                .setMessage("¿Desea eliminar los últimos pronósticos?") // esto si lo use con la funcion que obtuve
+                .setPositiveButton("Sí", (dialog, which) -> { // desde el MainActivity cuando no habia conexion de internet
                     forecastDaysList.clear();
                     pronosticoAdapter.notifyDataSetChanged();
                 })

@@ -40,7 +40,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     }
 
     public class LocationViewHolder extends RecyclerView.ViewHolder {
-
         private TextView nameTextView;
         private TextView regionTextView;
         private TextView countryTextView;
@@ -55,7 +54,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
                 @Override
                 public void onClick(View v) {
                     Location selectedLocation = locations.get(getAdapterPosition());
-                    //  Navegar a PronosticoFragment pasando el idLocation
                     Bundle bundle = new Bundle();
                     bundle.putString("idLocation", String.valueOf(selectedLocation.getId()));  //  Asegúrate de tener un getId()
                     navController.navigate(R.id.action_locationFragment_to_pronosticoFragment, bundle);

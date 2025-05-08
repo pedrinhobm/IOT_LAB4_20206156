@@ -26,12 +26,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Validar conexión a Internet
+        // Desde un inicio se realizara la verificación de conexion de internet
+        // ya está colocado de frente las funciones
         if (!verificarConexion()) {
             mostrarDialogoConfiguracion();
         }
 
-        // Botón "Ingresar"
+        // Este es el botón de ingresar el cual fue implementado
+        // con el intent para cambiar de vista
         ingresarButton = findViewById(R.id.ingresar_button);
         ingresarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,18 +44,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Texto "Elaborado por..."
+        // Aqui encontramos el texto que indica por mi elaboración
         elaboradoPorText = findViewById(R.id.elaborado_por_text);
         elaboradoPorText.setText("Elaborado por: Pedro Miguel Bustamante Melo 20206156");
     }
-
+    // para verificar conexion , vuelvo a usar la funcion que realicé en el laboratorio anterior
+    // se determina si cuenta con servicio del sistema
     private boolean verificarConexion() {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
-
+    // aqui si su ia porque no queria que se cruce con la vista xml de la vista principal
+    // solo que me lanza la advertencia si es que desea la comunicación
+    // aparte lo use porque no sabia como dirigir de mi aplicacion a la configuracion de red del emulador
+    // o de mi propio celular
     private void mostrarDialogoConfiguracion() {
         new AlertDialog.Builder(this)
                 .setTitle("Sin Conexión")

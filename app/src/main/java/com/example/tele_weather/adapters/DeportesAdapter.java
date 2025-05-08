@@ -12,9 +12,7 @@ import com.example.tele_weather.models.Football;
 import java.util.List;
 
 public class DeportesAdapter extends RecyclerView.Adapter<DeportesAdapter.DeportesViewHolder> {
-
     private List<Sport> sports;
-
     public DeportesAdapter(List<Sport> sports) {
         this.sports = sports;
     }
@@ -53,7 +51,6 @@ public class DeportesAdapter extends RecyclerView.Adapter<DeportesAdapter.Deport
             startTextView = itemView.findViewById(R.id.deportes_start_text_view);
             matchTextView = itemView.findViewById(R.id.deportes_match_text_view);
         }
-
         public void bind(Sport sport) {
             if (sport != null && sport.getFootball() != null) {
                 Football football = sport.getFootball().get(0);  //  Asume que es el primer elemento

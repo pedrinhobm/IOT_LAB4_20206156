@@ -1,5 +1,4 @@
 package com.example.tele_weather;
-
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -13,7 +12,6 @@ public class AppActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-
         BottomNavigationView navView = findViewById(R.id.bottom_navigation);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
@@ -23,10 +21,10 @@ public class AppActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         NavController navController = ((NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)).getNavController();
-        if (navController.getCurrentDestination().getId() == R.id.locationFragment) { // Ajusta el ID si es necesario
-            super.onBackPressed(); // Si está en el fragmento inicial, cierra la Activity
-        } else {
-            navController.popBackStack(); // De lo contrario, navega hacia atrás
+        if (navController.getCurrentDestination().getId() == R.id.locationFragment) {
+            super.onBackPressed(); // Esto es cuando cierras la Activity
+        } else { // o de lo contrario, en este caso puedes navegar para atrás
+            navController.popBackStack();
         }
     }
 }

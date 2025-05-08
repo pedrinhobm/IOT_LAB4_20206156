@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.tele_weather.R;
 import com.example.tele_weather.adapters.DeportesAdapter;
-import com.example.tele_weather.models.Sport;  // Si creas una clase Sport
+import com.example.tele_weather.models.Sport;
 import com.example.tele_weather.network.WeatherApi;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class DeportesFragment extends Fragment {
     private Button searchButton;
     private RecyclerView recyclerView;
     private DeportesAdapter deportesAdapter;
-    private List<Sport> sportList = new ArrayList<>();  // O usa un tipo de lista adecuado
+    private List<Sport> sportList = new ArrayList<>();
     private WeatherApi weatherApi;
 
     @Override
@@ -69,14 +69,13 @@ public class DeportesFragment extends Fragment {
     }
 
     private void buscarDeportes(String location) {
-        // Usa Retrofit para hacer la llamada a la API (Ejemplo)
         Call<Sport> call = weatherApi.getSports("ec24b1c6dd8a4d528c1205500250305", location);
         call.enqueue(new Callback<Sport>() {
             @Override
             public void onResponse(Call<Sport> call, Response<Sport> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     sportList.clear();
-                    sportList.add(response.body());  //  Asume que recibes un objeto Sport
+                    sportList.add(response.body());
                     deportesAdapter.notifyDataSetChanged();
                 } else {
                     mostrarError("No se encontraron datos deportivos en ese local");

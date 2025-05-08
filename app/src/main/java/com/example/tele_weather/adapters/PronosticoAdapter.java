@@ -37,7 +37,6 @@ public class PronosticoAdapter extends RecyclerView.Adapter<PronosticoAdapter.Pr
     }
 
     public class PronosticoViewHolder extends RecyclerView.ViewHolder {
-
         private TextView dateTextView;
         private TextView maxTempTextView;
         private TextView minTempTextView;
@@ -50,7 +49,6 @@ public class PronosticoAdapter extends RecyclerView.Adapter<PronosticoAdapter.Pr
             minTempTextView = itemView.findViewById(R.id.pronostico_min_temp_text_view);
             conditionTextView = itemView.findViewById(R.id.pronostico_condition_text_view);
         }
-
         public void bind(ForecastDay forecastDay) {
             dateTextView.setText(forecastDay.getDate());
             maxTempTextView.setText("Max: " + forecastDay.getDay().getMaxtemp_c() + "°C"); // Asume que tienes getDay()

@@ -8,7 +8,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface WeatherApi {
-
+    // aqui obtendramos de cada campo los datos que escribes
+    // primero la localidad, el pronostico y deportes
     @GET("search.json")
     Call<List<Location>> searchLocations(
             @Query("key") String apiKey,
