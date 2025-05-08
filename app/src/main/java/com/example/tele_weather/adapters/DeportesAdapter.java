@@ -57,7 +57,7 @@ public class DeportesAdapter extends RecyclerView.Adapter<DeportesAdapter.Deport
                 stadiumTextView.setText("Estadio: " + football.getStadium());
                 countryTextView.setText("País: " + football.getCountry());
                 tournamentTextView.setText("Torneo: " + football.getTournament());
-                startTextView.setText("Incio: " + football.getStart());
+                startTextView.setText("Inicio: " + football.getStart());
                 matchTextView.setText("Partido: " + football.getMatch());
             }
         }

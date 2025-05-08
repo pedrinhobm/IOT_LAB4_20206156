@@ -53,9 +53,9 @@ public class PronosticoAdapter extends RecyclerView.Adapter<PronosticoAdapter.Pr
         }
         public void bind(ForecastDay forecastDay) { // en la funcion de bind se recibirá y mostrará los datos
             dateTextView.setText(forecastDay.getDate());
-            maxTempTextView.setText("Max: " + forecastDay.getDay().getMaxtemp_c() + "°C");
-            minTempTextView.setText("Min: " + forecastDay.getDay().getMintemp_c() + "°C");
-            conditionTextView.setText(forecastDay.getDay().getCondition().getText());
+            maxTempTextView.setText("Max temperature: " + forecastDay.getDay().getMaxtemp_c() + "°C");
+            minTempTextView.setText("Min temperature: " + forecastDay.getDay().getMintemp_c() + "°C");
+            conditionTextView.setText("Condition: " + forecastDay.getDay().getCondition().getText());
         }
     }
 }
