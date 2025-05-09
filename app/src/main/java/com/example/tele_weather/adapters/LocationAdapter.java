@@ -43,10 +43,12 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         private TextView nameTextView;
         private TextView regionTextView;
         private TextView countryTextView;
+        private TextView idTextView;
 
         public LocationViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.location_name_text_view);
+            idTextView = itemView.findViewById(R.id.location_id_text_view);
             regionTextView = itemView.findViewById(R.id.location_region_text_view);
             countryTextView = itemView.findViewById(R.id.location_country_text_view);
 
@@ -63,6 +65,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
         public void bind(Location location) { // en la funcion de bind, se permitira obtener los datos de la localidad
             nameTextView.setText(location.getName()); // su nombre, region y pais exacto
+            idTextView.setText(String.valueOf(location.getId()));
             regionTextView.setText(location.getRegion());
             countryTextView.setText(location.getCountry());
         }

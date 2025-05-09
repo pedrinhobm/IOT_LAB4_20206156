@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.tele_weather.R;
-import com.example.tele_weather.models.ForecastDay; // Si creas una clase ForecastDay
+import com.example.tele_weather.models.ForecastDay;
 import java.util.List;
 
 public class PronosticoAdapter extends RecyclerView.Adapter<PronosticoAdapter.PronosticoViewHolder> {

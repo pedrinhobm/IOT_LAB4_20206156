@@ -21,6 +21,15 @@
             android:text="Nombre de la locación" />
 
         <TextView
+            android:id="@+id/location_id_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textSize="15sp"
+            android:layout_marginTop="4dp"/>
+
+
+        <TextView
             android:id="@+id/location_region_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

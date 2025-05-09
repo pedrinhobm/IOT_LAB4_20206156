@@ -41,7 +41,6 @@ public class PronosticoFragment extends Fragment implements SensorEventListener 
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private static final float umbral_aceleracion = 20.0f;
-
     private WeatherApi weatherApi;
 
     @Override
